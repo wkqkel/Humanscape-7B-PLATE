@@ -1,0 +1,28 @@
+@use '/src/styles/constants/colors';
+@use '/src/styles/mixins/flexbox';
+@use '/src/styles/mixins/position';
+
+.resultBox {
+  padding: 24px;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 24px;
+
+  span {
+    font-size: 14px;
+    color: colors.$GRAY6;
+  }
+
+  li {
+    @include flexbox.flexbox('start');
+    padding: 10px 0;
+
+    .searchIcon {
+      margin-right: 8px;
+    }
+  }
+
+  .active {
+    background-color: colors.$GRAYE;
+  }
+}

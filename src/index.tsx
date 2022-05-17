@@ -11,7 +11,7 @@ import './styles/index.scss';
 import Routes from './routes';
 
 const queryClient = new QueryClient({
-  defaultOptions: { queries: { refetchOnMount: false } },
+  defaultOptions: { queries: { refetchOnMount: false, refetchOnWindowFocus: false } },
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
