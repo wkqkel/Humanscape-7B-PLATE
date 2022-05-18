@@ -1,7 +1,7 @@
+@use '/src/styles/mixins/flexbox';
+
 .app {
-  display: flex;
-  align-items: start;
-  justify-content: center;
+  @include flexbox.flexbox('center', 'start');
   height: 100vh;
   padding: 100px;
   background-color: #cae9ff;

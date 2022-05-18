@@ -13,49 +13,4 @@
     text-align: center;
     letter-spacing: -0.018em;
   }
-
-  .searchForm {
-    @include flexbox.flexbox;
-    height: 64px;
-
-    * {
-      font-size: 18px;
-    }
-  }
-
-  .inputWrap {
-    @include flexbox.flexbox;
-    position: relative;
-    width: 540px;
-    height: 100%;
-
-    .searchInput {
-      width: 100%;
-      height: 100%;
-      padding: 0 32px 0 52px;
-      background-color: white;
-      border-top-left-radius: 42px;
-      border-bottom-left-radius: 42px;
-
-      &::placeholder {
-        font-weight: 600;
-        color: colors.$GRAYA;
-      }
-    }
-
-    .searchIcon {
-      position: absolute;
-      left: 24px;
-    }
-  }
-
-  .searchButton {
-    width: 100px;
-    height: 100%;
-    font-weight: 700;
-    color: colors.$WHITE;
-    background-color: #007be9;
-    border-top-right-radius: 42px;
-    border-bottom-right-radius: 42px;
-  }
 }

@@ -1,21 +1,25 @@
-import { useState, useRef, ChangeEvent } from 'react';
-import { useQuery } from 'react-query';
+import { useRef, ChangeEvent, KeyboardEvent } from 'react';
 import { debounce } from 'lodash';
 
-import { fetchSickApi, useFetchResults } from 'services/sick';
+import { useAppDispatch, useKeys } from 'hooks';
+import { searchActions } from 'states/search';
 
 import styles from './searchBar.module.scss';
 import { SearchIcon } from 'assets/svgs';
 
 const SearchBar = () => {
-  const [inputValue, setInputValue] = useState('');
+  const dispatch = useAppDispatch();
+  const { downSelectIdx, upSelectIdx } = useKeys();
 
-  const { data } = useFetchResults(inputValue);
-
-  const debounceSetInput = useRef(debounce((val) => setInputValue(val), 300)).current;
+  const debounceSetInput = useRef(debounce((val) => dispatch(searchActions.setSearchValue(val)), 300)).current;
 
   const onChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
     debounceSetInput(event.target.value);
+  };
+
+  const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'ArrowUp') downSelectIdx(10);
+    if (e.key === 'ArrowDown') upSelectIdx(10);
   };
 
   return (
@@ -27,6 +31,7 @@ const SearchBar = () => {
           type='text'
           onChange={onChangeInput}
           placeholder='질환명을 입력해 주세요.'
+          onKeyDown={handleKeyDown}
         />
       </div>
       <button type='submit' className={styles.searchButton} aria-label='Search button'>

@@ -6,6 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { Provider } from 'react-redux';
+import { store } from './states/store';
+
 import './styles/index.scss';
 
 import Routes from './routes';
@@ -19,9 +22,11 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
-      <BrowserRouter>
-        <Routes />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes />
+        </BrowserRouter>
+      </Provider>
     </QueryClientProvider>
   </React.StrictMode>
 );
